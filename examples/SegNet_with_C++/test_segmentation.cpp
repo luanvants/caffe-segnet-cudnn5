@@ -130,7 +130,7 @@ void Classifier::Visualization(Blob<float>* output_layer, string LUT_file) {
   //merged_output_image = merged_output_image/255.0;
 
   merged_output_image.convertTo(merged_output_image, CV_8U);
-  cv::cvtColor(merged_output_image.clone(), merged_output_image, CV_GRAY2BGR);
+  cv::cvtColor(merged_output_image.clone(), merged_output_image, cv::COLOR_GRAY2BGR);
   cv::Mat label_colours = cv::imread(LUT_file,1);
   cv::Mat output_image;
   LUT(merged_output_image, label_colours, output_image);
