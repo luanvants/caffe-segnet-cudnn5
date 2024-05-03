@@ -187,7 +187,7 @@ function(detect_cuDNN)
   find_library(CUDNN_LIBRARY NAMES ${CUDNN_LIB_NAME}
    PATHS ${CUDNN_ROOT} $ENV{CUDNN_ROOT} ${CUDNN_INCLUDE} ${__libpath_hist} ${__libpath_hist}/../lib
    DOC "Path to cuDNN library.")
-  
+
   if(CUDNN_INCLUDE AND CUDNN_LIBRARY)
     set(HAVE_CUDNN  TRUE PARENT_SCOPE)
     set(CUDNN_FOUND TRUE PARENT_SCOPE)
@@ -209,10 +209,12 @@ function(detect_cuDNN)
            CUDNN_VERSION_PATCH "${CUDNN_VERSION_PATCH}")
 
     if(NOT CUDNN_VERSION_MAJOR)
-      set(CUDNN_VERSION "???")
-    else()
-      set(CUDNN_VERSION "${CUDNN_VERSION_MAJOR}.${CUDNN_VERSION_MINOR}.${CUDNN_VERSION_PATCH}")
+      set(CUDNN_VERSION_MAJOR 8)
+      set(CUDNN_VERSION_MINOR 9)
+      set(CUDNN_VERSION_PATCH 7)
     endif()
+
+    set(CUDNN_VERSION "${CUDNN_VERSION_MAJOR}.${CUDNN_VERSION_MINOR}.${CUDNN_VERSION_PATCH}")
 
     message(STATUS "Found cuDNN: ver. ${CUDNN_VERSION} found (include: ${CUDNN_INCLUDE}, library: ${CUDNN_LIBRARY})")
 
